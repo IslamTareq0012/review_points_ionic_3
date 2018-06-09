@@ -34,10 +34,10 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
+  primary:    #CC0000,
+  secondary:  #ff9999,
+  danger:     #3B5998,
+  light:      white,
   dark:       #222
 );
 
@@ -86,3 +86,13 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+$toolbar-background: color($colors , primary);
+
+$tabs-ios-tab-text-color: color($colors , secondary);
+
+$tabs-ios-tab-text-color-active	: color($colors , light);
+
+$tabs-ios-tab-icon-color: color($colors , secondary);
+
+$tabs-ios-tab-icon-color-active	: color($colors , light);
