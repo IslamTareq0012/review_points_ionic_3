@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { RankingPage } from '../pages/ranking/ranking';
@@ -12,6 +13,7 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
+import { ProfileProvider } from '../providers/profile/profile';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,10 @@ import { AuthProvider } from '../providers/auth/auth';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    AuthProvider
+    AuthProvider,
+    NativeStorage,
+    ProfileProvider,
+    ProfileProvider
   ]
 })
 export class AppModule { }

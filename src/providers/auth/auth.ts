@@ -12,8 +12,8 @@ import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angul
 @Injectable()
 export class AuthProvider {
 
-  loginurl: string = 'http://localhost:3000/api/auth/login';
-  regurl: string = 'http://54.163.41.235:1337/api/register'
+  loginUrl: string = 'http://localhost:3000/api/auth/login';
+  signupUrl: string = 'http://localhost:3000/api/auth/signup';
 
   constructor(private http: Http) {
     console.log('Hello AuthProvider Provider');
@@ -23,7 +23,7 @@ export class AuthProvider {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body: any = { "email": credentials.email, "password": credentials.password };
-    return this.http.post(this.loginurl, body, { headers: headers }).map((res) => { return res.json() }).toPromise();
+    return this.http.post(this.loginUrl, body, { headers: headers }).map((res) => { return res.json() }).toPromise();
   }
 
 }

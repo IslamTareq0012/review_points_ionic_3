@@ -9,9 +9,12 @@
   <ion-navbar>
     <ion-title text-center>Edit Profile</ion-title>
     <ion-buttons end>
-      <button (click)="edit()" ion-button large clear>
+      <button *ngIf="profileData" (click)="edit()" ion-button large clear>
             <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Save
-          </button>
+      </button>
+      <button *ngIf="!profileData" (click)="edit()" ion-button large clear>
+            <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Register
+      </button>
     </ion-buttons>
   </ion-navbar>
 

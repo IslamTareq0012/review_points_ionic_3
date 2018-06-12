@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProfileProvider } from '../../providers/profile/profile'
 
 /**
  * Generated class for the ProfilePage page.
@@ -16,7 +17,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ProfilePage {
   tabBarElement: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private profileProvider : ProfileProvider) {
 
   }
   ionViewWillEnter() {

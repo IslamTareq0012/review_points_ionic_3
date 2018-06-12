@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProfileProvider } from '../../providers/profile/profile'
 
 /**
  * Generated class for the EditProfilePage page.
@@ -15,23 +16,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EditProfilePage {
   tabBarElement: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  profileData = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private profileProvider: ProfileProvider) {
   }
 
 
   ionViewWillEnter() {
-    this.tabBarElement.style.display = 'none';
+    if (this.profileData) {
+      this.tabBarElement.style.display = 'none';
+    }
   }
 
   ionViewWillLeave() {
-    this.tabBarElement.style.display = 'flex';
+    if (this.profileData) {
+      this.tabBarElement.style.display = 'flex';
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
-    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
-    console.log("tabs element", this.tabBarElement);
+    if (this.profileData) {
+      this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+      console.log("tabs element", this.tabBarElement);
+    }
 
   }
 

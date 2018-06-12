@@ -1,16 +1,24 @@
 import { Component } from '@angular/core';
+import { Platform, NavParams } from 'ionic-angular';
 
-import {RankingPage} from '../ranking/ranking';
-import {ReviewsPage} from '../reviews/reviews';
+import { RankingPage } from '../ranking/ranking';
+import { ReviewsPage } from '../reviews/reviews';
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root : any = ReviewsPage;
-  tab2Root : any = RankingPage;
+  tab1Root: any = ReviewsPage;
+  tab2Root: any = RankingPage;
 
-  constructor() {
+  userData: any;
+  constructor(private navParams: NavParams) {
+    this.userData = this.navParams.get("userData");
+    console.log("user data", this.userData);
+  }
+
+  ionViewWillEnter() {
 
   }
+
 }

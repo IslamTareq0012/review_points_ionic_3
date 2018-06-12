@@ -7,11 +7,20 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 })
 export class ReviewsPage {
 
+  userData: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReviewsPage');
+    this.userData = this.navParams.data;
+    console.log("user data", this.navParams.data);
+  }
+
+  ionViewWillEnter() {
+    this.userData = this.navParams.data;
+
   }
 
   presentSearchPrompt() {
@@ -50,12 +59,12 @@ export class ReviewsPage {
     alert.present();
   }
 
-  openProfile(){
+  openProfile() {
     this.navCtrl.push('ProfilePage');
   }
 
-  addReview(){
-    
+  addReview() {
+
   }
 
 }
