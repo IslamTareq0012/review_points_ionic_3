@@ -72,6 +72,7 @@ var ProfilePage = /** @class */ (function () {
     }
     ProfilePage.prototype.ionViewWillEnter = function () {
         this.tabBarElement.style.display = 'none';
+        console.log("user data", this.navParams.data);
     };
     ProfilePage.prototype.ionViewWillLeave = function () {
         this.tabBarElement.style.display = 'flex';

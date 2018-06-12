@@ -60,7 +60,7 @@ export class ReviewsPage {
   }
 
   openProfile() {
-    this.navCtrl.push('ProfilePage');
+    this.navCtrl.push('ProfilePage', this.userData);
   }
 
   addReview() {

@@ -18,7 +18,7 @@
     <ion-grid>
       <ion-row>
         <ion-col col-5>
-          <img src="assets/imgs/avatar.png" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">
+          <img src="{{imageUrl}}{{userData.userImage}}" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">
         </ion-col>
         <ion-col col-7>
           <div style="padding-top: 2rem;">
@@ -46,9 +46,9 @@
       <ion-slide>
         <div style="text-align: left;">
           <p style="font-weight: bold;">Name:</p>
-          <p style=" margin: 1px; color: #CC0000;">Islam Tareq Sayed</p><br>
+          <p style=" margin: 1px; color: #CC0000;">{{userData.fullName}}</p><br>
           <p style="font-weight: bold;">Email:</p>
-          <p style=" margin: 1px; color: #CC0000;">Islam@mail.com</p><br>
+          <p style=" margin: 1px; color: #CC0000;">{{userData.email}}</p><br>
           <p style="font-weight: bold;">DOB:</p>
           <p style=" margin: 1px; color: #CC0000;">12-2-1997</p><br><br>
         </div>
@@ -88,13 +88,11 @@
       </ion-slide>
 
       <ion-slide>
-        <div style="text-align: left;">
-          <p style="font-weight: bold;">Jumia.com:</p>
-          <p style=" margin: 1px; color: #CC0000;">50</p><br>
-          <p style="font-weight: bold;">Souq.com:</p>
-          <p style=" margin: 1px; color: #CC0000;">50</p><br>
-          <p style="font-weight: bold;">Nefsak.com:</p>
-          <p style=" margin: 1px; color: #CC0000;">50</p><br><br>
+        <div *ngFor="let point of userData.points" style="text-align: left;">
+          <ion-scroll scrollY="true" style="height: 30rem; width: 100%;">
+            <p style="font-weight: bold;">{{point.siteName}}:</p>
+            <p style=" margin: 1px; color: #CC0000;">{{point.sitePoints}}</p><br>
+          </ion-scroll>
         </div>
       </ion-slide>
     </ion-slides>

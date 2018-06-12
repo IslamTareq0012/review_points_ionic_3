@@ -16,12 +16,15 @@ import { ProfileProvider } from '../../providers/profile/profile'
 })
 export class ProfilePage {
   tabBarElement: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams , private profileProvider : ProfileProvider) {
+  userData: any;
+  imageUrl: "http://localhost:3000/images/";
+  constructor(public navCtrl: NavController, public navParams: NavParams, private profileProvider: ProfileProvider) {
 
   }
   ionViewWillEnter() {
     this.tabBarElement.style.display = 'none';
+    console.log("user data", this.navParams.data);
+    this.userData = this.navParams.data;
   }
 
   ionViewWillLeave() {

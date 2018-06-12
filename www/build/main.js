@@ -371,7 +371,7 @@ var ReviewsPage = /** @class */ (function () {
         alert.present();
     };
     ReviewsPage.prototype.openProfile = function () {
-        this.navCtrl.push('ProfilePage');
+        this.navCtrl.push('ProfilePage', this.userData);
     };
     ReviewsPage.prototype.addReview = function () {
     };
