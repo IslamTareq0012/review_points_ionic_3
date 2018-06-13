@@ -25735,6 +25735,24 @@ page-profile .time-left {
   color: #aaa;
 }
 
+.header .col {
+  background-color: lightgrey;
+}
+
+.col {
+  border: solid 1px grey;
+  border-bottom-style: none;
+  border-right-style: none;
+}
+
+.col:last-child {
+  border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+  border-bottom: solid 1px grey;
+}
+
 page-reviews {
   /* Style images */
   /* Style the right image */

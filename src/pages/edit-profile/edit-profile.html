@@ -22,16 +22,27 @@
 
 
 <ion-content padding>
-  <div style=" border:1px solid #CC0000;height: 40rem; width: 100%; margin: auto; border-radius: 25px; padding: 2rem;">
+  <div style=" border:1px solid #CC0000;height: 52rem; width: 100%; margin: auto; border-radius: 25px; padding: 2rem;">
     <img src="assets/imgs/avatar.png" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">
+    <button float-right round small ion-button style="top:5rem">Upload</button>
     <ion-item>
       <ion-label color="primary" floating>Name</ion-label>
-      <ion-input></ion-input>
+      <ion-input [(ngModel)]="name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" floating>Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
+    <div *ngIf="!profileData">
+    <ion-item>
+      <ion-label color="primary" floating>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Confirm Password</ion-label>
+      <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+    </ion-item>
+  </div>
     <ion-item>
       <ion-label color="primary" floating>Date Of Birth</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>

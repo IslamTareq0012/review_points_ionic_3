@@ -25,5 +25,16 @@ export class AuthProvider {
     let body: any = { "email": credentials.email, "password": credentials.password };
     return this.http.post(this.loginUrl, body, { headers: headers }).map((res) => { return res.json() }).toPromise();
   }
-
+  SignUp(credentials){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let body: any = { "email": credentials.email, "password": credentials.password,
+     "resetPasswordToken":credentials.resetPasswordToken,
+    "resetPasswordExpires":credentials.resetPasswordExpires,
+    "points": credentials.points,
+    "notificationToken": credentials.notificationToken,
+    "fullName" : credentials.fullName,
+    "userImage": credentials.userImage };
+    return this.http.post(this.signupUrl,body,{headers: headers}).map((res) => { return res.json() }).toPromise();
+  }
 }

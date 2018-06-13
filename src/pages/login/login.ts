@@ -29,7 +29,7 @@ export class LoginPage {
     }
     this.authProvider.login(cerdentials).then((res) => {
       console.log("login response", res);
-      this.nativeStorage.setItem("token", { jwtUserToken: res.token }).then((saved) => console.log('Stored item!' , saved),
+      this.nativeStorage.setItem("token", { jwtUserToken: res.token }).then((saved) => this.navCtrl.push(TabsPage,saved),
         error => console.error('Error storing item', error)
       );
     }).catch(err => {
@@ -42,7 +42,6 @@ export class LoginPage {
       alert.present();
     });
 
-    //this.navCtrl.push(TabsPage);
   }
 
   register() {
