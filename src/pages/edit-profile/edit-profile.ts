@@ -29,6 +29,7 @@ export class EditProfilePage {
   userImage = null;
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private alertCtrl: AlertController) {
     this.userData = this.navParams.data;
+    console.log("user data to edit", this.userData);
     if (this.userData == null) {
       console.log("RegisterPage", this.userData)
       this.profileData = false;

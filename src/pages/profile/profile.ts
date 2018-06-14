@@ -23,10 +23,11 @@ export class ProfilePage {
   tabBarElement: any;
   userData: any;
   reviewsData: Review[];
-  imageUrl: "http://localhost:3000/images/";
+  imageUrl;
   loading = null;
   totalPoints;
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController, private profileProvider: ProfileProvider, public loadingCtrl: LoadingController) {
+    this.imageUrl = "http://localhost:3000/images/";
     this.userData = {} as User;
     this.reviewsData = [];
     this.totalPoints = 0;
@@ -87,7 +88,7 @@ export class ProfilePage {
     }
   }
   editProfileNav() {
-    this.navCtrl.push('EditProfilePage',this.userData);
+    this.navCtrl.push('EditProfilePage', this.userData);
   }
 
 }

@@ -47,6 +47,7 @@ var EditProfilePageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tabs_tabs__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,6 +57,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -75,7 +77,8 @@ var EditProfilePage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.profileData = false;
         this.userImage = null;
-        this.userData = this.navParams.get("userData");
+        this.userData = this.navParams.data;
+        console.log("user data to edit", this.userData);
         if (this.userData == null) {
             console.log("RegisterPage", this.userData);
             this.profileData = false;
@@ -102,9 +105,9 @@ var EditProfilePage = /** @class */ (function () {
             console.log("tabs element", this.tabBarElement);
         }
     };
-    EditProfilePage.prototype.SignUp = function () {
-    };
     EditProfilePage.prototype.edit = function () {
+    };
+    EditProfilePage.prototype.signup = function () {
         var _this = this;
         var emailForm = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         console.log(this.email);
@@ -127,7 +130,12 @@ var EditProfilePage = /** @class */ (function () {
             console.log("Card : ", cerdentials);
             this.authProvider.SignUp(cerdentials).then(function (res) {
                 console.log("Sign Up response", res);
-                _this.nativeStorage.setItem("token", { jwtUserToken: res.token }).then(function (saved) { return console.log(saved); }, function (error) { return console.error('Error storing item', error); });
+                _this.nativeStorage.setItem("token", { jwtUserToken: res.token }).then(function (saved) {
+                    console.log(saved);
+                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__tabs_tabs__["a" /* TabsPage */]);
+                }).catch(function (err) {
+                    console.log("save token error", err);
+                });
             }).catch(function (err) {
                 console.log("SignUp error ", err);
             });
@@ -144,7 +152,7 @@ var EditProfilePage = /** @class */ (function () {
     };
     EditProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-edit-profile',template:/*ion-inline-start:"D:\proj\Ionic\gp-user-spare\front-end\src\pages\edit-profile\edit-profile.html"*/'<!--\n\n  Generated template for the EditProfilePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center>Edit Profile</ion-title>\n\n    <ion-buttons end>\n\n      <button *ngIf="profileData" (click)="edit()" ion-button large clear>\n\n            <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Save\n\n      </button>\n\n      <button *ngIf="!profileData" (click)="edit()" ion-button large clear>\n\n            <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Register\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div style=" border:1px solid #CC0000;height: 52rem; width: 100%; margin: auto; border-radius: 25px; padding: 2rem;">\n\n    <img src="assets/imgs/avatar.png" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">\n\n    <button float-right round small ion-button style="top:5rem">Upload</button>\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Name</ion-label>\n\n      <ion-input [(ngModel)]="name"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Email</ion-label>\n\n      <ion-input type="email" [(ngModel)]="email"></ion-input>\n\n    </ion-item>\n\n    <div *ngIf="!profileData">\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Password</ion-label>\n\n      <ion-input type="password" [(ngModel)]="password"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Confirm Password</ion-label>\n\n      <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>\n\n    </ion-item>\n\n  </div>\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Date Of Birth</ion-label>\n\n      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>\n\n    </ion-item>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"D:\proj\Ionic\gp-user-spare\front-end\src\pages\edit-profile\edit-profile.html"*/,
+            selector: 'page-edit-profile',template:/*ion-inline-start:"D:\proj\Ionic\gp-user-spare\front-end\src\pages\edit-profile\edit-profile.html"*/'<!--\n\n  Generated template for the EditProfilePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center>Edit Profile</ion-title>\n\n    <ion-buttons end>\n\n      <button *ngIf="profileData" (click)="edit()" ion-button large clear>\n\n            <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Save\n\n      </button>\n\n      <button *ngIf="!profileData" (click)="signup()" ion-button large clear>\n\n            <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Register\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <div style=" border:1px solid #CC0000;height: 52rem; width: 100%; margin: auto; border-radius: 25px; padding: 2rem;">\n\n    <img src="assets/imgs/avatar.png" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">\n\n    <button float-right round small ion-button style="top:5rem">Upload</button>\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Name</ion-label>\n\n      <ion-input [(ngModel)]="name"></ion-input>\n\n    </ion-item>\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Email</ion-label>\n\n      <ion-input type="email" [(ngModel)]="email"></ion-input>\n\n    </ion-item>\n\n    <div *ngIf="!profileData">\n\n      <ion-item>\n\n        <ion-label color="primary" floating>Password</ion-label>\n\n        <ion-input type="password" [(ngModel)]="password"></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label color="primary" floating>Confirm Password</ion-label>\n\n        <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>\n\n      </ion-item>\n\n    </div>\n\n    <ion-item>\n\n      <ion-label color="primary" floating>Date Of Birth</ion-label>\n\n      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>\n\n    </ion-item>\n\n  </div>\n\n</ion-content>'/*ion-inline-end:"D:\proj\Ionic\gp-user-spare\front-end\src\pages\edit-profile\edit-profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], EditProfilePage);

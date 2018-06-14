@@ -82,6 +82,7 @@ var ProfilePage = /** @class */ (function () {
         this.profileProvider = profileProvider;
         this.loadingCtrl = loadingCtrl;
         this.loading = null;
+        this.imageUrl = "http://localhost:3000/images/";
         this.userData = {};
         this.reviewsData = [];
         this.totalPoints = 0;
@@ -125,7 +126,7 @@ var ProfilePage = /** @class */ (function () {
         if (!this.loading) {
             this.loading = this.loadingCtrl.create({
                 spinner: 'dots',
-                content: 'Please Wait...'
+                content: 'Loading...'
             });
             this.loading.present();
         }
@@ -137,7 +138,7 @@ var ProfilePage = /** @class */ (function () {
         }
     };
     ProfilePage.prototype.editProfileNav = function () {
-        this.navCtrl.push('EditProfilePage');
+        this.navCtrl.push('EditProfilePage', this.userData);
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
