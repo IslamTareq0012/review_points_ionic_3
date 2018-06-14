@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProfileProvider } from '../../providers/profile/profile'
 import { AuthProvider } from '../../providers/auth/auth';
 import { NativeStorage } from '@ionic-native/native-storage';
 
+import { TabsPage } from '../tabs/tabs';
 /**
  * Generated class for the EditProfilePage page.
  *
@@ -25,14 +26,16 @@ export class EditProfilePage {
   confirmPassword;
   name;
   myDate;
+  userImage = null;
   constructor(private nativeStorage: NativeStorage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private alertCtrl: AlertController) {
-    if (this.navParams.get("userData") == null ){
-      console.log("RegisterPage",this.userData)
-      this.profileData=false;   
-     }
-     else{
-      console.log("EditProfilePage",this.userData)
-      this.profileData=true
+    this.userData = this.navParams.data;
+    if (this.userData == null) {
+      console.log("RegisterPage", this.userData)
+      this.profileData = false;
+    }
+    else {
+      console.log("EditProfilePage", this.userData)
+      this.profileData = true
     }
   }
 
@@ -58,11 +61,11 @@ export class EditProfilePage {
 
   }
 
-  SignUp(){
+  edit() {
 
   }
 
-  edit() {
+  signup() {
     var emailForm = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     console.log(this.email)
     console.log(this.name)
@@ -70,37 +73,40 @@ export class EditProfilePage {
     console.log(this.confirmPassword)
     console.log(this.myDate)
 
-    if (this.password == this.confirmPassword && emailForm.test(this.email) && (this.email && this.password && this.confirmPassword&&this.myDate && this.name)!= undefined){
+    if (this.password == this.confirmPassword && emailForm.test(this.email) && (this.email && this.password && this.confirmPassword && this.myDate && this.name) != undefined) {
       console.log("valid")
       var cerdentials = {
         email: this.email,
         password: this.password,
-        resetPasswordToken:"undefined",
-        resetPasswordExpires:0,
+        resetPasswordToken: "undefined",
+        resetPasswordExpires: 0,
         points: [],
         notificationToken: " N/A",
-        fullName : this.name,
-        userImage: null
+        fullName: this.name,
+        userImage: this.userImage
       }
-      console.log("Card : ",cerdentials);
+      console.log("Card : ", cerdentials);
       this.authProvider.SignUp(cerdentials).then((res) => {
-      console.log("Sign Up response", res);
-      this.nativeStorage.setItem("token", { jwtUserToken: res.token }).then((saved) => console.log(saved),
-        error => console.error('Error storing item', error)
-      );
-    }).catch(err => {
-      console.log("SignUp error ", err);
-    });
-    }else{
+        console.log("Sign Up response", res);
+        this.nativeStorage.setItem("token", { jwtUserToken: res.token }).then((saved) => {
+          console.log(saved);
+          this.navCtrl.push(TabsPage);
+        }).catch(err => {
+          console.log("save token error", err)
+        })
+      }).catch(err => {
+        console.log("SignUp error ", err);
+      });
+    } else {
       console.log("Not Valid")
       let alert = this.alertCtrl.create({
-              title: 'Error',
-              subTitle: 'Check All Fields',
-              buttons: ['Ok']
-            });
-            alert.present();
+        title: 'Error',
+        subTitle: 'Check All Fields',
+        buttons: ['Ok']
+      });
+      alert.present();
     }
-   }
   }
+}
 
 

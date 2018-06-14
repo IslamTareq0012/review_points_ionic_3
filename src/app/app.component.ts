@@ -26,13 +26,8 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       subscription.subscribe(token => {
+        this.nav.setRoot(TabsPage);
         console.log("token from observable", token.jwtUserToken);
-        profileProvder.getUser(token.jwtUserToken).then(res => {
-          console.log("user data ", res);
-          this.nav.setRoot(TabsPage, { userData: res });
-        }).catch(err => {
-          console.log("error getting user", err);
-        })
       },
         error => {
           console.log("no token", error);

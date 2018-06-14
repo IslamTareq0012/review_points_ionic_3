@@ -9,11 +9,14 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { RankingPage } from '../pages/ranking/ranking';
 import { ReviewsPage } from '../pages/reviews/reviews';
 import { LoginPage } from '../pages/login/login';
+import { LongDatePipe } from '../pipes/long-date/long-date';
+import { ShortDatePipe } from '../pipes/short-date/short-date'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { ProfileProvider } from '../providers/profile/profile';
+import { ReviewsProvider } from '../providers/reviews/reviews';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     TabsPage,
     RankingPage,
     ReviewsPage,
-    LoginPage
+    LoginPage,
+    ShortDatePipe
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { ProfileProvider } from '../providers/profile/profile';
     AuthProvider,
     NativeStorage,
     ProfileProvider,
-    ProfileProvider
+    ProfileProvider,
+    ReviewsProvider,
+    ReviewsProvider
   ]
 })
 export class AppModule { }

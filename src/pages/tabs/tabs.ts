@@ -13,8 +13,6 @@ export class TabsPage {
 
   userData: any;
   constructor(private navParams: NavParams) {
-    this.userData = this.navParams.data;
-    console.log("user data", this.userData);
   }
 
   ionViewWillEnter() {

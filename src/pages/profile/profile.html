@@ -26,14 +26,14 @@
               Reviews:
             </p>
             <p style="margin: 2px; color: #CC0000;">
-              50
+              {{reviewsData.length}}
             </p>
             <hr>
             <p style=" margin: 2px; font-weight: bold;">
               Points:
             </p>
             <p style=" margin: 2px; color: #CC0000;">
-              150
+              {{totalPoints}}
             </p>
           </div>
         </ion-col>
@@ -53,47 +53,32 @@
           <p style=" margin: 1px; color: #CC0000;">12-2-1997</p><br><br>
         </div>
       </ion-slide>
-      <ion-slide>
-        <div style="margin-bottom: 1rem;">
-          <ion-scroll scrollY="true" style="height: 30rem; width: 100%;">
-            <div class="container darker">
-              <img src="assets/imgs/avatar.png" alt="Avatar" class="right">
-              <h4>
-                Islam Tareq
-              </h4>
-              <hr>
-              <div style="width: 80%; word-wrap: break-word;">
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking
-                  at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-                  as opposed to using 'Content here, content here', making it look like readable English.</p>
-              </div>
-              <span class="time-left">11:01</span>
-            </div>
-            <div class="container darker">
-              <img src="assets/imgs/avatar.png" alt="Avatar" class="right">
-              <h4>
-                Islam Tareq
-              </h4>
-              <hr>
-              <div style="width: 80%; word-wrap: break-word;">
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking
-                  at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-                  as opposed to using 'Content here, content here', making it look like readable English.</p>
-              </div>
-              <span class="time-left">11:01</span>
-            </div>
-          </ion-scroll>
-        </div>
 
+      <ion-slide>
+        <ion-scroll padding scrollY="true" style="height: 30rem; width: 100%;">
+          <div *ngFor="let review of reviewsData" style="margin-bottom: 1rem;">
+            <div class="container darker">
+              <img src="{{imageUrl}}{{userData.userImage}}" alt="Avatar" class="right">
+              <h4>
+                {{userData.fullName}}
+              </h4>
+              <hr>
+              <div style="width: 80%; word-wrap: break-word;">
+                <p>{{review.review}}</p>
+              </div>
+              <span class="time-left">{{review.dateCreated| longDate}}</span>
+            </div>
+          </div>
+        </ion-scroll>
       </ion-slide>
 
       <ion-slide>
-        <div *ngFor="let point of userData.points" style="text-align: left;">
-          <ion-scroll scrollY="true" style="height: 30rem; width: 100%;">
-            <p style="font-weight: bold;">{{point.siteName}}:</p>
+        <ion-scroll padding scrollY="true" style="height: 30rem; width: 100%;">
+          <div *ngFor="let point of userData.points" style="text-align: left;">
+            <p style="font-weight: bold; margin: 1px;">{{point.siteName}}:</p>
             <p style=" margin: 1px; color: #CC0000;">{{point.sitePoints}}</p><br>
-          </ion-scroll>
-        </div>
+          </div>
+        </ion-scroll>
       </ion-slide>
     </ion-slides>
   </div>

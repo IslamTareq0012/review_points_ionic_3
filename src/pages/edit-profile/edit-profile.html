@@ -12,7 +12,7 @@
       <button *ngIf="profileData" (click)="edit()" ion-button large clear>
             <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Save
       </button>
-      <button *ngIf="!profileData" (click)="edit()" ion-button large clear>
+      <button *ngIf="!profileData" (click)="signup()" ion-button large clear>
             <ion-icon name="md-checkmark" style="font-size: 20px;"></ion-icon>&nbsp;Register
       </button>
     </ion-buttons>
@@ -34,15 +34,15 @@
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
     <div *ngIf="!profileData">
-    <ion-item>
-      <ion-label color="primary" floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" floating>Confirm Password</ion-label>
-      <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
-    </ion-item>
-  </div>
+      <ion-item>
+        <ion-label color="primary" floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
+      </ion-item>
+    </div>
     <ion-item>
       <ion-label color="primary" floating>Date Of Birth</ion-label>
       <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>

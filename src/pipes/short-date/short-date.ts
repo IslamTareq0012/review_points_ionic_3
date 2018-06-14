@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+import moment from 'moment';
 /**
  * Generated class for the ShortDatePipe pipe.
  *
@@ -13,6 +13,6 @@ export class ShortDatePipe implements PipeTransform {
    * Takes a value and makes it lowercase.
    */
   transform(value: string, ...args) {
-    return value.toLowerCase();
+    return moment(value).format("DD-MM-YYYY").toString();
   }
 }

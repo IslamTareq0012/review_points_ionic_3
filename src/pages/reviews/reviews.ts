@@ -14,8 +14,6 @@ export class ReviewsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReviewsPage');
-    this.userData = this.navParams.data;
-    console.log("user data", this.navParams.data);
   }
 
   ionViewWillEnter() {
@@ -60,7 +58,7 @@ export class ReviewsPage {
   }
 
   openProfile() {
-    this.navCtrl.push('ProfilePage', this.userData);
+    this.navCtrl.push('ProfilePage');
   }
 
   addReview() {

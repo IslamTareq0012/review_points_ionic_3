@@ -25733,24 +25733,7 @@ page-profile .container::after {
 page-profile .time-left {
   float: left;
   color: #aaa;
-}
-
-.header .col {
-  background-color: lightgrey;
-}
-
-.col {
-  border: solid 1px grey;
-  border-bottom-style: none;
-  border-right-style: none;
-}
-
-.col:last-child {
-  border-right: solid 1px grey;
-}
-
-.row:last-child .col {
-  border-bottom: solid 1px grey;
+  font-size: 12px;
 }
 
 page-reviews {
@@ -25800,4 +25783,8 @@ page-reviews .time-left {
 
 page-reviews [text-color="my-custom-color"] {
   color: white;
+}
+
+page-reviews header .col {
+  background-color: transparent;
 }
