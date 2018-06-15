@@ -23,17 +23,40 @@
 
 <ion-content padding>
   <div style=" border:1px solid #CC0000;height: 52rem; width: 100%; margin: auto; border-radius: 25px; padding: 2rem;">
-    <img src="assets/imgs/avatar.png" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">
-    <button float-right round small ion-button style="top:5rem">Upload</button>
-    <ion-item>
-      <ion-label color="primary" floating>Name</ion-label>
-      <ion-input [(ngModel)]="name"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label color="primary" floating>Email</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
+    <div *ngIf="profileData">
+      <div>
+        <img src="{{imageUrl}}" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">
+        <button (click)="pickImage()" float-right round small ion-button>New Image</button>        
+      </div>
+      <ion-item>
+        <ion-label color="primary" floating>Name</ion-label>
+        <ion-input [(ngModel)]="this.userData.fullName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="this.userData.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Date Of Birth</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="this.userData.dateOfBirth"></ion-datetime>
+      </ion-item>
+      <button (click)="resestPassword()" float-right round block ion-button style="top:1rem">Reset password</button>
+
+    </div>
+
     <div *ngIf="!profileData">
+      <div>
+        <img src="assets/imgs/avatar.png" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">
+        <button (click)="pickImage()" float-left round small ion-button>New Image</button>
+      </div>
+      <ion-item>
+        <ion-label color="primary" floating>Name</ion-label>
+        <ion-input [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
       <ion-item>
         <ion-label color="primary" floating>Password</ion-label>
         <ion-input type="password" [(ngModel)]="password"></ion-input>
@@ -42,10 +65,11 @@
         <ion-label color="primary" floating>Confirm Password</ion-label>
         <ion-input type="password" [(ngModel)]="confirmPassword"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Date Of Birth</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+      </ion-item>
     </div>
-    <ion-item>
-      <ion-label color="primary" floating>Date Of Birth</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
-    </ion-item>
+
   </div>
 </ion-content>

@@ -12,7 +12,7 @@
       <ion-label color="primary" floating>Password</ion-label>
       <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
-    <div float-right style="color: gray; font-size: 12px; margin-top: 1rem;" class="text-hover">
+    <div (click)="resestPassword()" float-right style="color: gray; font-size: 12px; margin-top: 1rem;" class="text-hover">
       Forgot Your Password?!
     </div>
   </div>
