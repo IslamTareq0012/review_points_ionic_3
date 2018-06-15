@@ -1,17 +1,49 @@
-// .header .col {
-//     background-color:lightgrey;
-// }
+page-ranking {    
 
-// .col {
-//     border: solid 1px grey;
-//     border-bottom-style: none;
-//     border-right-style: none;
-// }
+    .container {
+        border: 2px solid #dedede;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+    }
+    .darker {
+        border-color: #ccc;
+        background-color: #ddd;
+    }
+    /* Style images */
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
 
-// .col:last-child {
-//     border-right: solid 1px grey;
-// }
+/* Style the right image */
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
-// .row:last-child .col {
-//     border-bottom: solid 1px grey;
-// }
+/* Style time text */
+.time-left {
+    float: left;
+    color: #aaa;
+}
+
+[text-color="my-custom-color"] {
+    color: white;
+}
+header .col {
+    background-color: transparent;
+}
+
+}

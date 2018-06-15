@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
-
+import {AddReviewPage} from '../add-review/add-review'
 @Component({
   selector: 'page-reviews',
   templateUrl: 'reviews.html',
@@ -62,7 +62,7 @@ export class ReviewsPage {
   }
 
   addReview() {
-
+    this.navCtrl.push('AddReviewPage');
   }
 
 }

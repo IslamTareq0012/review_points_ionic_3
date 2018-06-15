@@ -25736,6 +25736,59 @@ page-profile .time-left {
   font-size: 12px;
 }
 
+page-ranking {
+  /* Style images */
+  /* Style the right image */
+  /* Style time text */
+}
+
+page-ranking .container {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
+}
+
+page-ranking .darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+page-ranking .container img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+page-ranking .container img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+page-ranking .container::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+page-ranking .time-left {
+  float: left;
+  color: #aaa;
+}
+
+page-ranking [text-color="my-custom-color"] {
+  color: white;
+}
+
+page-ranking header .col {
+  background-color: transparent;
+}
+
 page-reviews {
   /* Style images */
   /* Style the right image */
