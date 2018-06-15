@@ -16,7 +16,8 @@ export class ProfileProvider {
 
   profileUrl: string = 'http://localhost:3000/api/users/me';
   userReviewsUrl: string = 'http://localhost:3000/api/users/getReviews';
-  
+  updateFcmTokenUrl: string = 'http://localhost:3000/api/users/getReviews';
+
   constructor(private nativeStorage: NativeStorage, public http: Http) {
     console.log('Hello ProfileProvider Provider');
   }
@@ -28,11 +29,26 @@ export class ProfileProvider {
     headers.append('Content-Type', 'application/json');
     return this.http.get(this.profileUrl, { headers: headers }).map((res) => { return res.json() }).toPromise();
   }
+  editUser(token, userData) {
+    var headers = new Headers();
+    headers.append('Access-Control-Allow-Headers', 'Authorization');
+    headers.append('Authorization', 'Bearer' + ' ' + token);
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(this.profileUrl, userData, { headers: headers }).map((res) => { return res.json() }).toPromise();
+  }
   getUserReviews(token) {
     var headers = new Headers();
     headers.append('Access-Control-Allow-Headers', 'Authorization');
     headers.append('Authorization', 'Bearer' + ' ' + token);
     headers.append('Content-Type', 'application/json');
     return this.http.get(this.userReviewsUrl, { headers: headers }).map((res) => { return res.json() }).toPromise();
+  }
+  updateUserFcmToken(userToken, FcmToken) {
+    var headers = new Headers();
+    headers.append('Access-Control-Allow-Headers', 'Authorization');
+    headers.append('Authorization', 'Bearer' + ' ' + userToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(this.updateFcmTokenUrl, FcmToken, { headers: headers }).map((res) => { return res.json() }).toPromise();
+
   }
 }

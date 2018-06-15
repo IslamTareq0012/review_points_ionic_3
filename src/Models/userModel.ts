@@ -8,5 +8,6 @@ export interface User {
     password: '',
     userImage: '',
     __v: '',
-    points: ''
+    points: '',
+    dateOfBirth: ''
 }

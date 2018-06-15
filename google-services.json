@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "588917794884",
+    "firebase_url": "https://reviewpoints-75e38.firebaseio.com",
+    "project_id": "reviewpoints-75e38",
+    "storage_bucket": "reviewpoints-75e38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588917794884:android:25a3741f2556855a",
+        "android_client_info": {
+          "package_name": "io.ionic.reviewpoints"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588917794884-pm72uqbhq4i0cv6i5jt26d6jgmud3b4v.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "588917794884-pm72uqbhq4i0cv6i5jt26d6jgmud3b4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANt1EmSHnU9jWRP5zBcjFygfmpE8YLVfc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

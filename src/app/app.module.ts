@@ -4,6 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 import { NativeStorage } from '@ionic-native/native-storage';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { FCM } from '@ionic-native/fcm';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { RankingPage } from '../pages/ranking/ranking';
@@ -17,6 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { ProfileProvider } from '../providers/profile/profile';
 import { ReviewsProvider } from '../providers/reviews/reviews';
+import { FcmProvider } from '../providers/fcm/fcm';
 
 @NgModule({
   declarations: [
@@ -24,8 +27,7 @@ import { ReviewsProvider } from '../providers/reviews/reviews';
     TabsPage,
     RankingPage,
     ReviewsPage,
-    LoginPage,
-    ShortDatePipe
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,10 @@ import { ReviewsProvider } from '../providers/reviews/reviews';
     ProfileProvider,
     ProfileProvider,
     ReviewsProvider,
-    ReviewsProvider
+    ReviewsProvider,
+    ImagePicker,
+    FcmProvider,
+    FCM
   ]
 })
 export class AppModule { }
