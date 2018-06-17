@@ -5,7 +5,7 @@
         <ion-col style="background-color: transparent;  border: none;" col-4>
           <ion-buttons>
             <button (click)="openProfile()" clear ion-button large float-left>
-                  <img src="assets/imgs/avatar.png" style=" border-radius: 50%; width: 4rem; height: 4rem;">
+                  <img src="{{imageUrl}}{{userData.userImage}}" style=" border-radius: 50%; width: 4rem; height: 4rem;">
             </button>
           </ion-buttons>
         </ion-col>
@@ -13,9 +13,13 @@
           <h3 text-color="my-custom-color">Reviews</h3>
         </ion-col>
         <ion-col style="background-color: transparent; border: none;" col-4>
-          <button (click)="presentSearchPrompt()" float-right style="left: 2rem; bottom: 1rem;" ion-button large clear>
+          <button *ngIf="!isSearch" (click)="presentSearchPrompt()" float-right style="left: 2rem; bottom: 1rem;" ion-button large
+            clear>
                 <ion-icon text-color="my-custom-color" name="ios-search-outline"></ion-icon>
           </button>
+          <button *ngIf="isSearch" (click)="cancelSearch()" float-right style="left: 2rem; bottom: 1rem;" ion-button large clear>
+              <ion-icon text-color="my-custom-color" name="ios-close-circle-outline"></ion-icon>
+        </button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -24,19 +28,25 @@
 
 
 <ion-content padding class="content">
-  <div class="container darker">
-    <img src="assets/imgs/avatar.png" alt="Avatar" class="right">
-    <h4>
-      Islam Tareq
-    </h4>
-    <hr>
-    <div style="width: 80%; word-wrap: break-word;">
-      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its
-        layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-        using 'Content here, content here', making it look like readable English.</p>
-    </div>
-    <span class="time-left">11:01</span>
-  </div>
+
+  <ion-list [virtualScroll]="reviewsData" [approxItemHeight]="'120px'">
+    <ion-item *virtualItem="let review">
+      <div *ngIf="review.user">
+        <div class="container darker">
+          <img src="{{imageUrl}}{{review.user.userImage}}" alt="Avatar" class="right">
+          <h4>
+            {{review.user.fullName}}
+          </h4>
+          <hr>
+          <div style="width: 80%; word-wrap: break-word;">
+            <p text-wrap>{{review.review}}</p>
+          </div>
+          <span class="time-left">{{review.dateCreated| longDate}}</span>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+
   <ion-fab bottom right>
     <button color="primary" ion-fab mini (click)="addReview()">
         <ion-icon name="add"></ion-icon>

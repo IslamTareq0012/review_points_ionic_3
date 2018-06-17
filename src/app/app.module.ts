@@ -27,7 +27,8 @@ import { FcmProvider } from '../providers/fcm/fcm';
     TabsPage,
     RankingPage,
     ReviewsPage,
-    LoginPage
+    LoginPage,
+    LongDatePipe
   ],
   imports: [
     BrowserModule,
