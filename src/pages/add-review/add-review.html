@@ -34,12 +34,16 @@
       </ion-item>
       <ion-item>
           <ion-label color="primary" floating>Site</ion-label>
-          <ion-input [(ngModel)]="site"></ion-input>
+        <ion-select color="primary" floating (ionChange)="setSiteValue(siteID)" [(ngModel)]="siteID">
+           <ion-option color="primary" floating value={{site._id}} *ngFor="let site of siteArray; let i = index" floating  >{{site.siteName}}</ion-option>
+         </ion-select>
         </ion-item> 
-      <ion-item>
-        <ion-label color="primary" floating>Category</ion-label>
-        <ion-input  [(ngModel)]="category"></ion-input>
-      </ion-item>
+        <ion-item *ngIf="categoryBool">
+            <ion-label color="primary" floating>Category</ion-label>
+          <ion-select color="primary" floating [(ngModel)]="categoryID" >
+             <ion-option  value={{category._id}} *ngFor="let category of categoryArray; let i = index" floating  >{{category.categoryName}}</ion-option>
+           </ion-select>
+          </ion-item> 
       <ion-item>
         <ion-label color="primary" floating>Review</ion-label>
         <ion-textarea [(ngModel)]="review"></ion-textarea>

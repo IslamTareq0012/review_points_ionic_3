@@ -18,14 +18,29 @@ export class ReviewsProvider {
   englishUrl: string = 'http://text-processing.com/api/sentiment/'
   reviewUrl: string = 'http://localhost:3000/api/reviews/'
   searchUrl: string = "http://localhost:3000/api/reviews/search"
+  siteUrl:string = 'http://localhost:3000/api/sites/'
+  categoryUrl:string = 'http://localhost:3000/api/categories/get_categories'
   constructor(public http: Http) {
     console.log('Hello ReviewsProvider Provider');
   }
+  GetSites(){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(this.siteUrl,{headers:headers}).map((res) => { return res.json() }).toPromise();
+  }
+
+  GetCategories(siteID){
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let body: any = { "siteID": siteID
+     };
+     return this.http.post(this.categoryUrl,body,{headers:headers}).map((res) => { return res.json() }).toPromise();
+  }
+
   Ranking(token: string) {
     var headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Bearer ' + token);
-    let options = new RequestOptions({ headers: headers });
     return this.http.get(this.rankingUrl, { headers: headers }).map((res) => { return res.json() }).toPromise();
   }
   DetectLanguage(text) {
