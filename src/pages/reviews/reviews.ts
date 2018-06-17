@@ -28,8 +28,12 @@ export class ReviewsPage {
   }
 
   ionViewDidLoad() {
-    this.showLoading();
     console.log('ionViewDidLoad ReviewsPage');
+
+  }
+
+  ionViewWillEnter() {
+    this.showLoading();
     var subscription = Observable.fromPromise(this.nativeStorage.getItem('token'));
 
     subscription.subscribe(token => {
@@ -51,10 +55,6 @@ export class ReviewsPage {
     }, err => {
       console.log("getting token error", err);
     });
-  }
-
-  ionViewWillEnter() {
-
   }
 
   showLoading() {

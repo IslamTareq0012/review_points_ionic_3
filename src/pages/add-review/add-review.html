@@ -41,7 +41,7 @@
         <ion-item *ngIf="categoryBool">
             <ion-label color="primary" floating>Category</ion-label>
           <ion-select color="primary" floating [(ngModel)]="categoryID" >
-             <ion-option  value={{category._id}} *ngFor="let category of categoryArray; let i = index" floating  >{{category.categoryName}}</ion-option>
+             <ion-option  value={{category.categoryName}} *ngFor="let category of categoryArray; let i = index" floating  >{{category.categoryName}}</ion-option>
            </ion-select>
           </ion-item> 
       <ion-item>

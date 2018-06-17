@@ -26,6 +26,7 @@ export class AddReviewPage {
   productModel;
   siteID;
   siteArray=[];
+  siteName;
   categoryID;
   categoryArray=[]
   categoryBool = false;
@@ -109,13 +110,20 @@ export class AddReviewPage {
           });
           alert.present();
          }
+         for (let i=0;i<this.siteArray.length;i++){
+          if (this.siteID == this.siteArray[i]._id){
+            console.log(this.siteArray[i].siteName);
+            this.siteName=this.siteArray[i].siteName
+            break;
+          }
+         }
          this.reviewData = {
           "invoiceID": this.invoiceID,
           "productName":this.productName,
          "category":this.categoryID,
          "productModel": this.productModel,
          "review": this.review,
-         "site" : this.siteID,
+         "site" : this.siteName,
          "user": this.userID,
          "sentiment":this.sentiment
          }
@@ -158,6 +166,7 @@ export class AddReviewPage {
         buttons: ['Ok']
       });
       alert.present();
+      this.dismissLoading()
       console.log("error detecting Language", err);
     });
 }

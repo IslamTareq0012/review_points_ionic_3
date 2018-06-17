@@ -250,9 +250,11 @@ var ReviewsPage = /** @class */ (function () {
         this.imageUrl = "http://localhost:3000/images/";
     }
     ReviewsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ReviewsPage');
+    };
+    ReviewsPage.prototype.ionViewWillEnter = function () {
         var _this = this;
         this.showLoading();
-        console.log('ionViewDidLoad ReviewsPage');
         var subscription = __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"].fromPromise(this.nativeStorage.getItem('token'));
         subscription.subscribe(function (token) {
             console.log("token in reviews page", token.jwtUserToken);
@@ -273,8 +275,6 @@ var ReviewsPage = /** @class */ (function () {
         }, function (err) {
             console.log("getting token error", err);
         });
-    };
-    ReviewsPage.prototype.ionViewWillEnter = function () {
     };
     ReviewsPage.prototype.showLoading = function () {
         if (!this.loading) {
