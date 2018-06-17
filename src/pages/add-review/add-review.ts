@@ -24,8 +24,11 @@ export class AddReviewPage {
   invoiceID;
   productName;
   productModel;
-  site;
-  category;
+  siteID;
+  siteArray=[];
+  categoryID;
+  categoryArray=[]
+  categoryBool = false;
   review;
   reviewData={};
   sentiment;
@@ -44,13 +47,18 @@ export class AddReviewPage {
     this.showLoading();
     var subscription = Observable.fromPromise(this.nativeStorage.getItem('token'));
     subscription.subscribe(token => {
-
       console.log("token from observable", token.jwtUserToken);
       this.profileProvider.getUser(token.jwtUserToken).then(res => {
         this.userData = res._id;
         this.userID=res._id
         this.userToken=token.jwtUserToken
         console.log("User ID" ,this.userID)
+        this.reviewProvider.GetSites().then(res => {
+          console.log(res);
+          this.siteArray = res;
+        }).catch(err => {
+          console.log(err)
+        });
         this.dismissLoading();
       }).catch(err => {
         console.log("error getting user", err);
@@ -59,7 +67,26 @@ export class AddReviewPage {
       error => {
         console.log("no token", error);
       });
+     
   }
+
+  setSiteValue(siteID){
+    console.log(siteID);
+    if(siteID){
+    this.categoryBool=true
+    this.showLoading()
+    this.reviewProvider.GetCategories(siteID).then(res =>{
+      console.log(res);
+      this.categoryArray=res;
+      this.dismissLoading();
+    }).catch(err =>{
+      console.log(err)
+    })
+  }else{
+    this.categoryBool = false;
+  }
+}
+
   CheckLanguage(){
     this.showLoading()
     this.reviewProvider.DetectLanguage(this.review).then(res => {
@@ -85,10 +112,10 @@ export class AddReviewPage {
          this.reviewData = {
           "invoiceID": this.invoiceID,
           "productName":this.productName,
-         "category":this.category,
+         "category":this.categoryID,
          "productModel": this.productModel,
          "review": this.review,
-         "site" : this.site,
+         "site" : this.siteID,
          "user": this.userID,
          "sentiment":this.sentiment
          }
@@ -143,8 +170,8 @@ export class AddReviewPage {
     console.log(this.invoiceID);
     console.log(this.productModel);
     console.log(this.productName);
-    console.log(this.site);
-    console.log(this.category);
+    console.log(this.siteID);
+    console.log(this.categoryID);
     console.log(this.review);
   }
   showLoading() {
