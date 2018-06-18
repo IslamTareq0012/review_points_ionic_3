@@ -100,7 +100,7 @@ export class EditProfilePage {
         this.profileProvider.editUser(token.jwtUserToken, this.userData)
           .then(res => {
             console.log("edit user response", res);
-            this.navCtrl.push('ProfilePage');
+            this.navCtrl.pop();
           }).catch(err => {
             console.log("edit user error", err);
           });

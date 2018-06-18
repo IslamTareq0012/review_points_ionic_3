@@ -7,6 +7,7 @@ import 'rxjs/add/observable/fromPromise';
 
 import { User } from '../../Models/userModel';
 import { Review } from '../../Models/reviewModel';
+import { ProfilePage } from '../profile/profile'
 import { ProfileProvider } from '../../providers/profile/profile'
 import { ReviewsProvider } from '../../providers/reviews/reviews';
 @Component({
@@ -155,7 +156,7 @@ export class ReviewsPage {
   }
 
   openProfile() {
-    this.navCtrl.push('ProfilePage');
+    this.navCtrl.push(ProfilePage);
   }
 
   addReview() {

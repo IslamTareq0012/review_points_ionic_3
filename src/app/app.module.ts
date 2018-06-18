@@ -10,6 +10,7 @@ import { FCM } from '@ionic-native/fcm';
 import { TabsPage } from '../pages/tabs/tabs';
 import { RankingPage } from '../pages/ranking/ranking';
 import { ReviewsPage } from '../pages/reviews/reviews';
+import { ProfilePage } from '../pages/profile/profile'
 import { LoginPage } from '../pages/login/login';
 import { LongDatePipe } from '../pipes/long-date/long-date';
 import { ShortDatePipe } from '../pipes/short-date/short-date'
@@ -28,7 +29,9 @@ import { FcmProvider } from '../providers/fcm/fcm';
     RankingPage,
     ReviewsPage,
     LoginPage,
-    LongDatePipe
+    LongDatePipe,
+    ShortDatePipe,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { FcmProvider } from '../providers/fcm/fcm';
     TabsPage,
     RankingPage,
     ReviewsPage,
-    LoginPage
+    LoginPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
