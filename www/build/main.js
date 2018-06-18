@@ -30,9 +30,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AuthProvider = /** @class */ (function () {
     function AuthProvider(http) {
         this.http = http;
-        this.loginUrl = 'http://localhost:3000/api/auth/login';
-        this.signupUrl = 'http://localhost:3000/api/auth/signup';
-        this.forgotPasswordUrl = 'http://localhost:3000/api/auth/forgot_password';
+        this.loginUrl = 'https://reviewpointsgp.herokuapp.com/api/auth/login';
+        this.signupUrl = 'https://reviewpointsgp.herokuapp.com/api/auth/signup';
+        this.forgotPasswordUrl = 'https://reviewpointsgp.herokuapp.com/api/auth/forgot_password';
         console.log('Hello AuthProvider Provider');
     }
     AuthProvider.prototype.login = function (credentials) {
@@ -287,7 +287,7 @@ var ReviewsPage = /** @class */ (function () {
         this.isSearch = false;
         this.userData = {};
         this.reviewsData = [];
-        this.imageUrl = "http://localhost:3000/images/";
+        this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/";
     }
     ReviewsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ReviewsPage');
@@ -474,7 +474,7 @@ var ProfilePage = /** @class */ (function () {
         this.userData = {};
         this.reviewsData = [];
         this.totalPoints = 0;
-        this.imageUrl = "http://localhost:3000/images/" + this.userData.userImage;
+        this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/" + this.userData.userImage;
     }
     ProfilePage.prototype.ionViewWillEnter = function () {
         this.tabBarElement.style.display = 'none';
@@ -498,7 +498,7 @@ var ProfilePage = /** @class */ (function () {
                 }
                 _this.totalPoints = Points;
                 _this.userData = res;
-                _this.imageUrl = "http://localhost:3000/images/" + _this.userData.userImage;
+                _this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/" + _this.userData.userImage;
                 _this.profileProvider.getUserReviews(token.jwtUserToken).then(function (res) {
                     _this.reviewsData = res;
                     _this.dismissLoading();
@@ -839,9 +839,9 @@ var ProfileProvider = /** @class */ (function () {
     function ProfileProvider(nativeStorage, http) {
         this.nativeStorage = nativeStorage;
         this.http = http;
-        this.profileUrl = 'http://localhost:3000/api/users/me';
-        this.userReviewsUrl = 'http://localhost:3000/api/users/getReviews';
-        this.updateFcmTokenUrl = 'http://localhost:3000/api/users/getReviews';
+        this.profileUrl = 'https://reviewpointsgp.herokuapp.com/api/users/me';
+        this.userReviewsUrl = 'https://reviewpointsgp.herokuapp.com/api/users/getReviews';
+        this.updateFcmTokenUrl = 'https://reviewpointsgp.herokuapp.com/api/users/getReviews';
         console.log('Hello ProfileProvider Provider');
     }
     ProfileProvider.prototype.getUser = function (token) {
@@ -1386,14 +1386,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ReviewsProvider = /** @class */ (function () {
     function ReviewsProvider(http) {
         this.http = http;
-        this.rankingUrl = 'http://localhost:3000/api/reviews/ranking';
+        this.rankingUrl = 'https://reviewpointsgp.herokuapp.com/api/reviews/ranking';
         this.detectLanguageUrl = 'https://api.repustate.com/v4/844812bf08eaaed2d09cb8fa5185231c71653a87/detect-language.json';
         this.arabicUrl = 'https://api.repustate.com/v4/844812bf08eaaed2d09cb8fa5185231c71653a87/score.json';
         this.englishUrl = 'http://text-processing.com/api/sentiment/';
-        this.reviewUrl = 'http://localhost:3000/api/reviews/';
-        this.searchUrl = "http://localhost:3000/api/reviews/search";
-        this.siteUrl = 'http://localhost:3000/api/sites/';
-        this.categoryUrl = 'http://localhost:3000/api/categories/get_categories';
+        this.reviewUrl = 'https://reviewpointsgp.herokuapp.com/api/reviews/';
+        this.searchUrl = "https://reviewpointsgp.herokuapp.com/api/reviews/search";
+        this.siteUrl = 'https://reviewpointsgp.herokuapp.com/api/sites/';
+        this.categoryUrl = 'https://reviewpointsgp.herokuapp.com/api/categories/get_categories';
         console.log('Hello ReviewsProvider Provider');
     }
     ReviewsProvider.prototype.GetSites = function () {

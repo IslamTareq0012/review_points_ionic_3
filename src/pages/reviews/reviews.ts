@@ -25,7 +25,7 @@ export class ReviewsPage {
   constructor(private profileProvider: ProfileProvider, private reviewProvider: ReviewsProvider, private nativeStorage: NativeStorage, public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
     this.userData = {} as User;
     this.reviewsData = [];
-    this.imageUrl = "http://localhost:3000/images/";
+    this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/";
   }
 
   ionViewDidLoad() {

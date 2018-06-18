@@ -12,14 +12,14 @@ import 'rxjs/add/observable/fromPromise';
 */
 @Injectable()
 export class ReviewsProvider {
-  rankingUrl: string = 'http://localhost:3000/api/reviews/ranking';
+  rankingUrl: string = 'https://reviewpointsgp.herokuapp.com/api/reviews/ranking';
   detectLanguageUrl: string = 'https://api.repustate.com/v4/844812bf08eaaed2d09cb8fa5185231c71653a87/detect-language.json'
   arabicUrl: string = 'https://api.repustate.com/v4/844812bf08eaaed2d09cb8fa5185231c71653a87/score.json'
   englishUrl: string = 'http://text-processing.com/api/sentiment/'
-  reviewUrl: string = 'http://localhost:3000/api/reviews/'
-  searchUrl: string = "http://localhost:3000/api/reviews/search"
-  siteUrl:string = 'http://localhost:3000/api/sites/'
-  categoryUrl:string = 'http://localhost:3000/api/categories/get_categories'
+  reviewUrl: string = 'https://reviewpointsgp.herokuapp.com/api/reviews/'
+  searchUrl: string = "https://reviewpointsgp.herokuapp.com/api/reviews/search"
+  siteUrl:string = 'https://reviewpointsgp.herokuapp.com/api/sites/'
+  categoryUrl:string = 'https://reviewpointsgp.herokuapp.com/api/categories/get_categories'
   constructor(public http: Http) {
     console.log('Hello ReviewsProvider Provider');
   }

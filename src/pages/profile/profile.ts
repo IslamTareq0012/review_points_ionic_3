@@ -28,7 +28,7 @@ export class ProfilePage {
     this.userData = {} as User;
     this.reviewsData = [];
     this.totalPoints = 0;
-    this.imageUrl = "http://localhost:3000/images/" + this.userData.userImage;
+    this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/" + this.userData.userImage;
   }
   ionViewWillEnter() {
     this.tabBarElement.style.display = 'none';
@@ -55,7 +55,7 @@ export class ProfilePage {
         }
         this.totalPoints = Points;
         this.userData = res;
-        this.imageUrl = "http://localhost:3000/images/" + this.userData.userImage;
+        this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/" + this.userData.userImage;
         this.profileProvider.getUserReviews(token.jwtUserToken).then(res => {
           this.reviewsData = res;
           this.dismissLoading();

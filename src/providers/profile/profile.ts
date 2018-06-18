@@ -14,9 +14,9 @@ import 'rxjs/add/observable/fromPromise';
 @Injectable()
 export class ProfileProvider {
 
-  profileUrl: string = 'http://localhost:3000/api/users/me';
-  userReviewsUrl: string = 'http://localhost:3000/api/users/getReviews';
-  updateFcmTokenUrl: string = 'http://localhost:3000/api/users/getReviews';
+  profileUrl: string = 'https://reviewpointsgp.herokuapp.com/api/users/me';
+  userReviewsUrl: string = 'https://reviewpointsgp.herokuapp.com/api/users/getReviews';
+  updateFcmTokenUrl: string = 'https://reviewpointsgp.herokuapp.com/api/users/getReviews';
 
   constructor(private nativeStorage: NativeStorage, public http: Http) {
     console.log('Hello ProfileProvider Provider');

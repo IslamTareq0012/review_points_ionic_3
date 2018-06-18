@@ -45,8 +45,8 @@ export class EditProfilePage {
     else {
       console.log("EditProfilePage", this.userData)
       this.profileData = true
-      this.imageUrl = "http://localhost:3000/images/" + this.userData.userImage;
-      this.tempImageUrl = "http://localhost:3000/images/" + this.userData.userImage;
+      this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/" + this.userData.userImage;
+      this.tempImageUrl = "https://reviewpointsgp.herokuapp.com/images/" + this.userData.userImage;
       console.log("user data to edit", this.userData);
     }
   }

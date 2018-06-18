@@ -12,9 +12,9 @@ import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angul
 @Injectable()
 export class AuthProvider {
 
-  loginUrl: string = 'http://localhost:3000/api/auth/login';
-  signupUrl: string = 'http://localhost:3000/api/auth/signup';
-  forgotPasswordUrl: string = 'http://localhost:3000/api/auth/forgot_password';
+  loginUrl: string = 'https://reviewpointsgp.herokuapp.com/api/auth/login';
+  signupUrl: string = 'https://reviewpointsgp.herokuapp.com/api/auth/signup';
+  forgotPasswordUrl: string = 'https://reviewpointsgp.herokuapp.com/api/auth/forgot_password';
 
   constructor(private http: Http) {
     console.log('Hello AuthProvider Provider');
