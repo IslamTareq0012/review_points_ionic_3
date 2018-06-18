@@ -1,12 +1,12 @@
 webpackJsonp([2],{
 
-/***/ 109:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -68,6 +68,48 @@ var AuthProvider = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=auth.js.map
+
+/***/ }),
+
+/***/ 110:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ranking_ranking__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reviews_reviews__ = __webpack_require__(167);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var TabsPage = /** @class */ (function () {
+    function TabsPage(navParams) {
+        this.navParams = navParams;
+        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__reviews_reviews__["a" /* ReviewsPage */];
+        this.tab2Root = __WEBPACK_IMPORTED_MODULE_2__ranking_ranking__["a" /* RankingPage */];
+    }
+    TabsPage.prototype.ionViewWillEnter = function () {
+    };
+    TabsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\tabs\tabs.html"*/'<ion-tabs color="primary">\n\n  <ion-tab [root]="tab1Root" tabTitle="Reviews" tabIcon="ios-chatboxes" [rootParams]="userData"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Ranks" tabIcon="ios-ribbon" [rootParams]="userData"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\tabs\tabs.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], TabsPage);
+    return TabsPage;
+}());
+
+//# sourceMappingURL=tabs.js.map
 
 /***/ }),
 
@@ -429,10 +471,10 @@ var ProfilePage = /** @class */ (function () {
         this.profileProvider = profileProvider;
         this.loadingCtrl = loadingCtrl;
         this.loading = null;
-        this.imageUrl = "http://localhost:3000/images/";
         this.userData = {};
         this.reviewsData = [];
         this.totalPoints = 0;
+        this.imageUrl = "http://localhost:3000/images/" + this.userData.userImage;
     }
     ProfilePage.prototype.ionViewWillEnter = function () {
         this.tabBarElement.style.display = 'none';
@@ -456,6 +498,7 @@ var ProfilePage = /** @class */ (function () {
                 }
                 _this.totalPoints = Points;
                 _this.userData = res;
+                _this.imageUrl = "http://localhost:3000/images/" + _this.userData.userImage;
                 _this.profileProvider.getUserReviews(token.jwtUserToken).then(function (res) {
                     _this.reviewsData = res;
                     _this.dismissLoading();
@@ -485,11 +528,11 @@ var ProfilePage = /** @class */ (function () {
         }
     };
     ProfilePage.prototype.editProfileNav = function () {
-        this.navCtrl.push('EditProfilePage', this.userData);
+        this.navCtrl.push('EditProfilePage', { userData: this.userData });
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\profile\profile.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center>Profile</ion-title>\n\n    <ion-buttons end>\n\n      <button (click)="editProfileNav()" ion-button large clear>\n\n          <ion-icon name="ios-create-outline" style="font-size: 30px;"></ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="content">\n\n\n\n  <div style="border:1px solid #CC0000; height: 15rem; width: 100%; margin: auto; border-radius: 25px; margin-bottom: 3rem;">\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-5>\n\n          <img src="{{imageUrl}}{{userData.userImage}}" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">\n\n        </ion-col>\n\n        <ion-col col-7>\n\n          <div style="padding-top: 2rem;">\n\n            <p style=" margin: 2px; font-weight: bold;">\n\n              Reviews:\n\n            </p>\n\n            <p style="margin: 2px; color: #CC0000;">\n\n              {{reviewsData.length}}\n\n            </p>\n\n            <hr>\n\n            <p style=" margin: 2px; font-weight: bold;">\n\n              Points:\n\n            </p>\n\n            <p style=" margin: 2px; color: #CC0000;">\n\n              {{totalPoints}}\n\n            </p>\n\n          </div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <div style="border:1px solid #CC0000;width: 100%; margin: auto; border-radius: 25px; padding-left: 1rem;">\n\n    <ion-slides pager="true">\n\n      <ion-slide>\n\n        <div style="text-align: left;">\n\n          <p style="font-weight: bold;">Name:</p>\n\n          <p style=" margin: 1px; color: #CC0000;">{{userData.fullName}}</p><br>\n\n          <p style="font-weight: bold;">Email:</p>\n\n          <p style=" margin: 1px; color: #CC0000;">{{userData.email}}</p><br>\n\n          <p style="font-weight: bold;">DOB:</p>\n\n          <p style=" margin: 1px; color: #CC0000;">{{userData.dateOfBirth | shortDate}}</p><br><br>\n\n        </div>\n\n      </ion-slide>\n\n\n\n      <ion-slide>\n\n        <ion-scroll padding scrollY="true" style="height: 30rem; width: 100%;">\n\n          <div *ngFor="let review of reviewsData" style="margin-bottom: 1rem;">\n\n            <div class="container darker">\n\n              <img src="{{imageUrl}}{{userData.userImage}}" alt="Avatar" class="right">\n\n              <h4>\n\n                {{userData.fullName}}\n\n              </h4>\n\n              <hr>\n\n              <div style="width: 80%; word-wrap: break-word;">\n\n                <p>{{review.review}}</p>\n\n              </div>\n\n              <span class="time-left">{{review.dateCreated| longDate}}</span>\n\n            </div>\n\n          </div>\n\n        </ion-scroll>\n\n      </ion-slide>\n\n\n\n      <ion-slide>\n\n        <ion-scroll padding scrollY="true" style="height: 30rem; width: 100%;">\n\n          <div *ngFor="let point of userData.points" style="text-align: left;">\n\n            <p style="font-weight: bold; margin: 1px;">{{point.siteName}}:</p>\n\n            <p style=" margin: 1px; color: #CC0000;">{{point.sitePoints}}</p><br>\n\n          </div>\n\n        </ion-scroll>\n\n      </ion-slide>\n\n    </ion-slides>\n\n  </div>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\profile\profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\profile\profile.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title text-center>Profile</ion-title>\n\n    <ion-buttons end>\n\n      <button (click)="editProfileNav()" ion-button large clear>\n\n          <ion-icon name="ios-create-outline" style="font-size: 30px;"></ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="content">\n\n\n\n  <div style="border:1px solid #CC0000; height: 15rem; width: 100%; margin: auto; border-radius: 25px; margin-bottom: 3rem;">\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-5>\n\n          <img src="{{imageUrl}}" style="border:1px solid #cccccc; border-radius: 25px; width: 12rem; height: 12rem;">\n\n        </ion-col>\n\n        <ion-col col-7>\n\n          <div style="padding-top: 2rem;">\n\n            <p style=" margin: 2px; font-weight: bold;">\n\n              Reviews:\n\n            </p>\n\n            <p style="margin: 2px; color: #CC0000;">\n\n              {{reviewsData.length}}\n\n            </p>\n\n            <hr>\n\n            <p style=" margin: 2px; font-weight: bold;">\n\n              Points:\n\n            </p>\n\n            <p style=" margin: 2px; color: #CC0000;">\n\n              {{totalPoints}}\n\n            </p>\n\n          </div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </div>\n\n\n\n  <div style="border:1px solid #CC0000;width: 100%; margin: auto; border-radius: 25px; padding-left: 1rem;">\n\n    <ion-slides pager="true">\n\n      <ion-slide>\n\n        <div style="text-align: left;">\n\n          <p style="font-weight: bold;">Name:</p>\n\n          <p style=" margin: 1px; color: #CC0000;">{{userData.fullName}}</p><br>\n\n          <p style="font-weight: bold;">Email:</p>\n\n          <p style=" margin: 1px; color: #CC0000;">{{userData.email}}</p><br>\n\n          <p style="font-weight: bold;">DOB:</p>\n\n          <p style=" margin: 1px; color: #CC0000;">{{userData.dateOfBirth | shortDate}}</p><br><br>\n\n        </div>\n\n      </ion-slide>\n\n\n\n      <ion-slide>\n\n        <ion-scroll padding scrollY="true" style="height: 30rem; width: 100%;">\n\n          <div *ngFor="let review of reviewsData" style="margin-bottom: 1rem;">\n\n            <div class="container darker">\n\n              <img src="{{imageUrl}}{{userData.userImage}}" alt="Avatar" class="right">\n\n              <h4>\n\n                {{userData.fullName}}\n\n              </h4>\n\n              <hr>\n\n              <div style="width: 80%; word-wrap: break-word;">\n\n                <p>{{review.review}}</p>\n\n              </div>\n\n              <span class="time-left">{{review.dateCreated| longDate}}</span>\n\n            </div>\n\n          </div>\n\n        </ion-scroll>\n\n      </ion-slide>\n\n\n\n      <ion-slide>\n\n        <ion-scroll padding scrollY="true" style="height: 30rem; width: 100%;">\n\n          <div *ngFor="let point of userData.points" style="text-align: left;">\n\n            <p style="font-weight: bold; margin: 1px;">{{point.siteName}}:</p>\n\n            <p style=" margin: 1px; color: #CC0000;">{{point.sitePoints}}</p><br>\n\n          </div>\n\n        </ion-scroll>\n\n      </ion-slide>\n\n    </ion-slides>\n\n  </div>\n\n\n\n</ion-content>'/*ion-inline-end:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\profile\profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_profile_profile__["a" /* ProfileProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
     ], ProfilePage);
@@ -508,10 +551,10 @@ var ProfilePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_native_storage__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_fcm__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_fcm__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_profile_profile__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tabs_tabs__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__tabs_tabs__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -621,7 +664,7 @@ var LoginPage = /** @class */ (function () {
         alert.present();
     };
     LoginPage.prototype.register = function () {
-        this.navCtrl.push('EditProfilePage');
+        this.navCtrl.push('EditProfilePage', { userData: null });
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -662,8 +705,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_native_storage__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_image_picker__ = __webpack_require__(334);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_fcm__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_fcm__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_ranking_ranking__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_reviews_reviews__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_profile_profile__ = __webpack_require__(168);
@@ -672,7 +715,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pipes_short_date_short_date__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_status_bar__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_splash_screen__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_auth_auth__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_auth_auth__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_profile_profile__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_reviews_reviews__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_fcm_fcm__ = __webpack_require__(410);
@@ -766,7 +809,7 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_native_storage__ = __webpack_require__(28);
@@ -855,8 +898,7 @@ var ProfileProvider = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_fromPromise__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_fromPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_profile_profile__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_profile_profile__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -875,10 +917,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var MyApp = /** @class */ (function () {
     function MyApp(nativeStorage, platform, statusBar, splashScreen, profileProvder) {
-        var _this = this;
         this.nativeStorage = nativeStorage;
         this.profileProvder = profileProvder;
         this.rootPage = __WEBPACK_IMPORTED_MODULE_7__pages_login_login__["a" /* LoginPage */];
@@ -889,7 +929,7 @@ var MyApp = /** @class */ (function () {
             statusBar.styleDefault();
             splashScreen.hide();
             subscription.subscribe(function (token) {
-                _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_8__pages_tabs_tabs__["a" /* TabsPage */]);
+                // this.nav.setRoot(TabsPage);
                 console.log("token from observable", token.jwtUserToken);
             }, function (error) {
                 console.log("no token", error);
@@ -903,7 +943,7 @@ var MyApp = /** @class */ (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_9__providers_profile_profile__["a" /* ProfileProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__ionic_native_native_storage__["a" /* NativeStorage */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_8__providers_profile_profile__["a" /* ProfileProvider */]])
     ], MyApp);
     return MyApp;
 }());
@@ -1319,7 +1359,7 @@ var FcmProvider = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReviewsProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_fromPromise__ = __webpack_require__(32);
@@ -1427,48 +1467,6 @@ var ReviewsProvider = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=reviews.js.map
-
-/***/ }),
-
-/***/ 57:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ranking_ranking__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reviews_reviews__ = __webpack_require__(167);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var TabsPage = /** @class */ (function () {
-    function TabsPage(navParams) {
-        this.navParams = navParams;
-        this.tab1Root = __WEBPACK_IMPORTED_MODULE_3__reviews_reviews__["a" /* ReviewsPage */];
-        this.tab2Root = __WEBPACK_IMPORTED_MODULE_2__ranking_ranking__["a" /* RankingPage */];
-    }
-    TabsPage.prototype.ionViewWillEnter = function () {
-    };
-    TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\tabs\tabs.html"*/'<ion-tabs color="primary">\n\n  <ion-tab [root]="tab1Root" tabTitle="Reviews" tabIcon="ios-chatboxes" [rootParams]="userData"></ion-tab>\n\n  <ion-tab [root]="tab2Root" tabTitle="Ranks" tabIcon="ios-ribbon" [rootParams]="userData"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"D:\proj\Ionic\new-spare-gb-frontend\front-end\src\pages\tabs\tabs.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
-    ], TabsPage);
-    return TabsPage;
-}());
-
-//# sourceMappingURL=tabs.js.map
 
 /***/ })
 

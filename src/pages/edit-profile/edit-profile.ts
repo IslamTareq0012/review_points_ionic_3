@@ -37,17 +37,17 @@ export class EditProfilePage {
   tempImageUrl;
   constructor(public fcm: FCM, private imagePicker: ImagePicker, private toastCtrl: ToastController, private profileProvider: ProfileProvider, private nativeStorage: NativeStorage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private alertCtrl: AlertController) {
     this.userData = {} as User;
-    this.userData = this.navParams.data;
-    this.imageUrl = "http://localhost:3000/images/" + this.userData.userImage;
-    this.tempImageUrl = "http://localhost:3000/images/" + this.userData.userImage;
-    console.log("user data to edit", this.userData);
-    if (this.userData == null) {
+    this.userData = this.navParams.get('userData');
+    if (this.userData=== null) {
       console.log("RegisterPage", this.userData)
       this.profileData = false;
     }
     else {
       console.log("EditProfilePage", this.userData)
       this.profileData = true
+      this.imageUrl = "http://localhost:3000/images/" + this.userData.userImage;
+      this.tempImageUrl = "http://localhost:3000/images/" + this.userData.userImage;
+      console.log("user data to edit", this.userData);
     }
   }
 

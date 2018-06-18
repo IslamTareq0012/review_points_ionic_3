@@ -106,7 +106,7 @@ export class LoginPage {
 
   }
   register() {
-    this.navCtrl.push('EditProfilePage');
+    this.navCtrl.push('EditProfilePage', { userData: null });
   }
 
 }
