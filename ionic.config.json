@@ -1,7 +1,13 @@
 {
   "name": "gp-user",
-  "app_id": "",
+  "app_id": "io.ionic.reviewpoints",
   "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/v4/844812bf08eaaed2d09cb8fa5185231c71653a87/detect-language.json",
+      "proxyUrl": "https://api.repustate.com"
+    }
+  ],
   "integrations": {
     "cordova": {}
   }

@@ -36,7 +36,8 @@ export class AuthProvider {
       "points": credentials.points,
       "notificationToken": credentials.notificationToken,
       "fullName": credentials.fullName,
-      "userImage": credentials.userImage
+      "userImage": credentials.userImage,
+      "dateOfBirth": credentials.dateOfBirth
     };
     return this.http.post(this.signupUrl, body, { headers: headers }).map((res) => { return res.json() }).toPromise();
   }

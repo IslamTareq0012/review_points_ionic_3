@@ -18,6 +18,7 @@ import { Review } from '../../Models/reviewModel';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
+  ran: any;
   tabBarElement: any;
   userData: any;
   reviewsData: Review[];
@@ -29,20 +30,11 @@ export class ProfilePage {
     this.reviewsData = [];
     this.totalPoints = 0;
     this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/" + this.userData.userImage;
+    this.ran = 0;
   }
   ionViewWillEnter() {
+    this.ran = Math.random();
     this.tabBarElement.style.display = 'none';
-
-  }
-
-  ionViewWillLeave() {
-    this.tabBarElement.style.display = 'flex';
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
-    console.log("tabs element", this.tabBarElement);
     this.showLoading();
     var subscription = Observable.fromPromise(this.nativeStorage.getItem('token'));
     subscription.subscribe(token => {
@@ -69,6 +61,16 @@ export class ProfilePage {
       error => {
         console.log("no token", error);
       });
+  }
+
+  ionViewWillLeave() {
+    this.tabBarElement.style.display = 'flex';
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfilePage');
+    this.tabBarElement = document.querySelector('.tabbar.show-tabbar');
+    console.log("tabs element", this.tabBarElement);
   }
 
   showLoading() {

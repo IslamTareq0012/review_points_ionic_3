@@ -26,7 +26,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       subscription.subscribe(token => {
-       // this.nav.setRoot(TabsPage);
+        this.nav.setRoot(TabsPage);
         console.log("token from observable", token.jwtUserToken);
       },
         error => {

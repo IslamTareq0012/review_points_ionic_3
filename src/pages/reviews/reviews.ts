@@ -15,7 +15,7 @@ import { ReviewsProvider } from '../../providers/reviews/reviews';
   templateUrl: 'reviews.html',
 })
 export class ReviewsPage {
-
+  ran: any;  
   userData: any;
   reviewsData: Review[];
   loading = null;
@@ -26,6 +26,8 @@ export class ReviewsPage {
     this.userData = {} as User;
     this.reviewsData = [];
     this.imageUrl = "https://reviewpointsgp.herokuapp.com/images/";
+    this.ran = 0;
+    
   }
 
   ionViewDidLoad() {
@@ -34,6 +36,8 @@ export class ReviewsPage {
   }
 
   ionViewWillEnter() {
+    this.ran = Math.random();    
+    
     this.showLoading();
     var subscription = Observable.fromPromise(this.nativeStorage.getItem('token'));
 

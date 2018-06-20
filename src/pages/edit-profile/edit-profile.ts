@@ -38,7 +38,7 @@ export class EditProfilePage {
   constructor(public fcm: FCM, private imagePicker: ImagePicker, private toastCtrl: ToastController, private profileProvider: ProfileProvider, private nativeStorage: NativeStorage, public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private alertCtrl: AlertController) {
     this.userData = {} as User;
     this.userData = this.navParams.get('userData');
-    if (this.userData=== null) {
+    if (this.userData === null) {
       console.log("RegisterPage", this.userData)
       this.profileData = false;
     }
@@ -108,7 +108,21 @@ export class EditProfilePage {
         console.log("getting token error", err);
       });
     } else if (this.tempImageUrl != this.userData.userImage) {
+      console.log("url of image picker :", this.tempImageUrl);
       this.userData.userImage = this.tempImageUrl;
+      var subscription = Observable.fromPromise(this.nativeStorage.getItem('token'));
+      subscription.subscribe(token => {
+        this.profileProvider.editUser(token.jwtUserToken, this.userData)
+          .then(res => {
+            console.log("edit user response", res);
+            this.navCtrl.pop();
+          }).catch(err => {
+            console.log("edit user error", err);
+          });
+      }, err => {
+        console.log("getting token error", err);
+      });
+
     }
   }
 
@@ -147,7 +161,8 @@ export class EditProfilePage {
         points: [],
         notificationToken: "N/A",
         fullName: this.name,
-        userImage: this.userImage
+        userImage: this.userImage,
+        dateOfBirth: this.myDate
       }
       console.log("Card : ", cerdentials);
       this.authProvider.SignUp(cerdentials).then((res) => {
