@@ -33,7 +33,7 @@ export class ProfilePage {
     this.ran = 0;
   }
   ionViewWillEnter() {
-    this.ran = Math.random();
+    this.ran = Math.random();    
     this.tabBarElement.style.display = 'none';
     this.showLoading();
     var subscription = Observable.fromPromise(this.nativeStorage.getItem('token'));

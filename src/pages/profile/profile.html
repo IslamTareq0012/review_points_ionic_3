@@ -58,7 +58,7 @@
         <ion-scroll padding scrollY="true" style="height: 30rem; width: 100%;">
           <div *ngFor="let review of reviewsData" style="margin-bottom: 1rem;">
             <div class="container darker">
-              <img src="{{imageUrl}}{{userData.userImage}}" alt="Avatar" class="right">
+              <img src="{{imageUrl}}{{userData.userImage}}?version={{ran}}" alt="Avatar" class="right">
               <h4>
                 {{userData.fullName}}
               </h4>

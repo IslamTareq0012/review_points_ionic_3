@@ -37,8 +37,11 @@
           <h4>
             {{review.user.fullName}}
           </h4>
+          <h5>Site : {{review.site}}</h5>
+            <h6>Product Name : {{review.productName}}</h6>
           <hr>
           <div style="width: 80%; word-wrap: break-word;">
+            
             <p text-wrap>{{review.review}}</p>
           </div>
           <span class="time-left">{{review.dateCreated| longDate}}</span>
